@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //iniciando o banco de dados
-mongoose.connect('mongodb+srv://new-user-010203:fHJMvOLv1KWTQ0o9@cluster0.dsvv9.mongodb.net/deliveries?retryWrites=true&w=majority',
+mongoose.connect(URL_DATABASE_MONGO_ATLAS,
 { useUnifiedTopology: true, useNewUrlParser: true },
     (err) => {
         if (!err) {

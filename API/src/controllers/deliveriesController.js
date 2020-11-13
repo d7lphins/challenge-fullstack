@@ -1,7 +1,6 @@
 const express = require('express');
 let router = express.Router();
 let Deliveries = require('../models/deliverie');
-
 router.route('/deliveries')
 
   /* 1) Método: Criar Usuario (acessar em: POST http://localhost:4000/api/deliveries/) */
@@ -22,8 +21,7 @@ router.route('/deliveries')
 
       deliveries.save(function(error) {
           if(error)
-              res.send(error);
-                      
+              res.send(error);                      
           res.json({ message: 'cadastro criado!' });
       });
   })
@@ -33,7 +31,6 @@ router.route('/deliveries')
       Deliveries.find(function(err, deliveries) {
           if(err)
               res.send(err);
-
           res.json(deliveries);
       });
   });
@@ -46,7 +43,6 @@ router.route('/deliveries/:deliveries_id')
       Deliveries.findById(req.params.deliveries_id, function(error, deliveries) {
           if(error) 
               res.send(error);
-
           res.json(deliveries);
       });
   })
@@ -58,7 +54,6 @@ router.route('/deliveries/:deliveries_id')
       }, function(error) {
           if(error)
               res.send(error);
-
           res.json({ message: 'Usuário excluído com Sucesso! '});
       });
   });
