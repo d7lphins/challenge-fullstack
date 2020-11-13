@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const DeliveriesSchema = new mongoose.Schema({
   nome: String,
   login: String,
@@ -17,5 +16,4 @@ const DeliveriesSchema = new mongoose.Schema({
 });
 
 const Deliveries = mongoose.model('Deliveries', DeliveriesSchema);
-
 module.exports = Deliveries;

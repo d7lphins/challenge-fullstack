@@ -5,7 +5,7 @@ router.route('/deliveries')
 
   /* 1) Método: Criar Usuario (acessar em: POST http://localhost:4000/api/deliveries/) */
   .post(function(req, res) {
-      var deliveries = new Deliveries();
+      let deliveries = new Deliveries();
 
       deliveries.nome_do_cliente = req.body.nome_do_cliente;
       deliveries.peso_em_kg = req.body.peso_em_kg;
