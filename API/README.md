@@ -24,4 +24,4 @@ Obs: para usar aplicação é necesário rodar npm install no terminal
 /api/deliveries/id |       GET         | Selecionar Por Id     |     
 /api/deliveries/id |       DELETE      | Excluir Por Id        |
 
-Obs: você usar o Postman https://www.postman.com ou insomnia https://insomnia.rest/
+Obs: você usar o Postman https://www.postman.com ou Insomnia https://insomnia.rest/
