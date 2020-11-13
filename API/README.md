@@ -4,17 +4,18 @@
 
 node server.js
 ```
-### Recursos utilizados no desenvolvimento:
+## Recursos utilizados no desenvolvimento:
 
 - Node.Js;
 - Express;
 - Mongoose;
 - cors
 - require-dir
+- body-parser
 
 Obs: para usar aplicação é necesário rodar npm install no terminal 
 
-### Rotas para testar aplicação:
+## Rotas para testar aplicação:
 
   ROTA                    |     HTTP(Verbo)   |      Descrição        | 
 ------------------------- | ----------------- | --------------------- | 

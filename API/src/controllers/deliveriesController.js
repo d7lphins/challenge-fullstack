@@ -2,13 +2,6 @@ const express = require('express');
 let router = express.Router();
 let Deliveries = require('../models/deliverie');
 
-
-/* Middleware para usar em todos os requests enviados para a nossa API- Mensagem Padrão */
-router.use(function(req, res, next) {
-  console.log('Algo está acontecendo aqui........');
-  next();
-});
-
 router.route('/deliveries')
 
   /* 1) Método: Criar Usuario (acessar em: POST http://localhost:4000/api/deliveries/) */
@@ -69,8 +62,5 @@ router.route('/deliveries/:deliveries_id')
           res.json({ message: 'Usuário excluído com Sucesso! '});
       });
   });
-
-//Fim Rotas da nossa API: 
-//==============================================================
 
 module.exports = router;

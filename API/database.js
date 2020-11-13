@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-//iniciando o DB
+//iniciando o banco de dados
 mongoose.connect('mongodb+srv://new-user-010203:fHJMvOLv1KWTQ0o9@cluster0.dsvv9.mongodb.net/deliveries?retryWrites=true&w=majority',
 { useUnifiedTopology: true, useNewUrlParser: true },
     (err) => {
