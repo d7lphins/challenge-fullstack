@@ -3,7 +3,7 @@
 ### Executando a Aplicação
 
 node server.js
-```
+
 ## Recursos utilizados no desenvolvimento:
 
 - Node.Js;
