@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  margin-left: 1%;
+}
+
+.main {
+  margin: 5%;
+  max-width: 75%;
+}

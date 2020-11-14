@@ -1,15 +1,21 @@
-import React, {Component} from 'react';
-import './style.css';
-import Routes from './routes';
+import React  from 'react';
+import './App.css';
+import Formulario from './components/Formulario';
+import Tabelas from './components/Tabelas';
+import Mapa from './components/Mapa';
 
-class App extends Component{
-    render(){
-        return(
-            <div className="app">
-                <Routes/>
-            </div>
-        );
-    }
+function App() {
+
+  return (
+    <div className="container">
+     <Formulario/>
+    <div className="main">  
+      <Mapa/>
+      <Tabelas/>
+    </div>
+    </div>
+ 
+  );
 }
 
 export default App;

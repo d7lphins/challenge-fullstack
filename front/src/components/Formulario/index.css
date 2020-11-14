@@ -1,0 +1,17 @@
+.sidebar {
+    max-width: 25%;
+    background-color: #ccc;
+}
+
+.form {
+    margin: 15%;
+    background-color: #ccc;
+}
+
+.input-w40 {
+    width: 40%;
+}
+
+.input-w100 {
+    width: 100%;
+}
