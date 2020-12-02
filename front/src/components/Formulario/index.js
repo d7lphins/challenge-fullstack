@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './index.css';
 
 const url = 'http://localhost:4000/api/deliveries';
 
@@ -93,14 +94,14 @@ const Form = () => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div className="form-sidebar">
 
       <p> end: {address} </p>
       <p> ende: {userAddress} </p>
       
-      <form className="challenge-form">
+      <form className="form-cinza">
 
-        <div className="form-address__search">
+        <div className="form">
             <input
             type="text"
             id="nome_do_cliente"
@@ -135,18 +136,18 @@ const Form = () => {
 
             <input
             type="text"
-            className="input-disabled"
+            className="input-w40"
             disabled
             value={codernada[0] ? codernada[0] : 'LATITUDE'}
             />
             <input
             type="text"
-            className="input-disabled"
+            className="input-w40"
             disabled
             value={codernada[1] ? codernada[0] : 'LONGITUDE'}
             />
 
-            <button className="form-button__save" onClick={onSave} type="submit">
+            <button className="input-w40" onClick={onSave} type="submit">
                 CADASTRAR CLIENTE
             </button>
 
