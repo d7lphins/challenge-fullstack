@@ -5,7 +5,6 @@ import Tabelas from './components/Tabelas';
 import Mapa from './components/Mapa';
 
 function App() {
-
   return (
     <div className="container">
      <Formulario/>
@@ -19,3 +18,4 @@ function App() {
 }
 
 export default App;
+

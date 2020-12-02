@@ -1,0 +1,12 @@
+.container-mapa {
+    margin: 0 auto;
+    height: 330px;
+    width: 800px;
+    border: 1px solid #009879;
+  }
+
+  
+.mapa{
+    height: 330px;
+    width: 800px;
+}
