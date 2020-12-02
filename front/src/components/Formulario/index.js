@@ -1,69 +1,159 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import './index.css';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function Formulario() { 
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => alert(JSON.stringify(data));
+const url = 'http://localhost:4000/api/deliveries';
+
+const Form = () => {
+  const [user, setUser] = useState([]);
+  const [address, setAddress] = useState([]);
+  const [position, setPosition] = useState([]);
+  const [userAddress, setUserAddress] = useState([]);
+  const [codernada, setCodernada] = useState([]);
+  const [map, setMap] = useState([]);
+
+  const buscarEnd = () => {
+    axios
+      .get('https://maps.googleapis.com/maps/api/geocode/json', {
+        params: {
+          address:address,
+          key: 'ADICIONAR CHAVE DA API',
+        },
+      })
+      .then((resp) => {
+        
+       setMap(resp);
+       console.log(map);
 
 
-  const saveGames = () => {
-    fetch('http://localhost:3000/game', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: formData, // Use your own property name / key
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => setData(result.rows))
-      .catch((err) => console.log('error'))
-  }
+         // console.log(map.data.results[0].address_components.long_name );
+      // console.log(map.data.results[0].address_components);
+      // console.log(map.data.results[0].geometry.location.lat);
+     // console.log(map.data.results[0].geometry.location.lng);
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    saveGames() // Save games when form is submitted
-  }
-  
+     setCodernada([map.data.results[0].geometry.location.lat, map.data.results[0].geometry.location.lng])
+
+      })
+      .catch((error) => console.log(error));
+  };
+
+  ///const onSetAddress = (resp) => {
+
+    //console.log(onSetAddress);
+
+    // const results = resp.data.results[0].address_components;
+    // const localizacao = resp.data.results[0].geometry.location;
+
+    //   setUserAddress({
+        // logradouro: results[1].long_name,
+        // numero: results[0].long_name,
+        // complement: results[0].long_name,
+        // bairro: results[2].long_name,
+        // cidade: results[3].long_name,
+        // estado: results[4].long_name,
+        // pais: results[5].long_name,
+        // latitude: localizacao.lat,
+        // longitude: localizacao.lng,
+    //   });
+ // };
+
+
+ const onChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+    console.log(user);
+
+  };
+
+  const onSave = (e) => {
+    e.preventDefault();
+    console.log(map);
+
+    try {
+      axios.post(url, {
+        nome_do_cliente: user.nome_do_cliente,
+        peso_em_kg: user.peso_em_kg,
+        logradouro: map.data.results[0].address_components.long_name,
+        numero: map.data.results[0].address_components.long_name,
+        complement: map.data.results[0].address_components.long_name,
+        bairro: map.data.results[0].address_components.long_name,
+        cidade: map.data.results[0].address_components.long_name,
+        estado: map.data.results[0].address_components.long_name,
+        pais: map.data.results[0].address_components.long_name,
+        latitude: map.data.results[0].geometry.location.lat,
+        longitude: map.data.results[0].geometry.location.lng,
+      });
+
+
+    //   map.data.results[0].address_components.long_name 
+
+
+    } catch (error) {
+      console.log('Erro ao cadastrar novo cliente!' + error);
+    }
+  };
 
   return (
-    <div className="sidebar">
-      <div className="form"> 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input name="nome_do_cliente" placeholder="nome_do_cliente" ref={register} />
-        <input name="logradouro" placeholder="logradouro" ref={register} />    
-        <input name="cidade" placeholder="cidade" ref={register} />
-        <input name="pais" placeholder="pais" ref={register} />  
-        <input name="peso_em_kg" placeholder="peso_em_kg" ref={register} />
-        <input name="lat" placeholder="lat" ref={register} />  
-        <input name="lng" placeholder="lng" ref={register} />  
-        <input type="submit" />
-      </form>
+    <div className="form-wrapper">
 
-        {/* <button> CADASTRAR CLIENTE </button>
-        <button> RESETAR CLIENTE </button> */}
-      </div>
+      <p> end: {address} </p>
+      <p> ende: {userAddress} </p>
+      
+      <form className="challenge-form">
+
+        <div className="form-address__search">
+            <input
+            type="text"
+            id="nome_do_cliente"
+            name="nome_do_cliente"
+            value={user.nome_do_cliente || ''}
+            placeholder="Nome do Cliente"
+            onChange={onChange}
+            />
+            <input
+            type="text"
+            id="peso_em_kg"
+            name="peso_em_kg"
+            value={user.peso_em_kg || ''}
+            placeholder="Peso da Entrega"
+            onChange={onChange}
+            />
+
+            <input
+            type="text"
+            value={address || ''}
+            placeholder="Endereço do Cliente"
+            onChange={(e) => setAddress(e.target.value)}
+            />
+
+            <button
+            className="form-button__search"
+            type="button"
+            onClick={buscarEnd}
+            >
+            BUSCAR
+            </button>
+
+            <input
+            type="text"
+            className="input-disabled"
+            disabled
+            value={codernada[0] ? codernada[0] : 'LATITUDE'}
+            />
+            <input
+            type="text"
+            className="input-disabled"
+            disabled
+            value={codernada[1] ? codernada[0] : 'LONGITUDE'}
+            />
+
+            <button className="form-button__save" onClick={onSave} type="submit">
+                CADASTRAR CLIENTE
+            </button>
+
+        </div>
+      </form>
     </div>
   );
-}
+};
 
-export default Formulario;
-
-
-
-
-
- 
-  // handleSubmit(event){ 
-  //  event.preventDefault();
-  //  fetch('/', {
-  //   method: 'post',
-  //   headers: {'Content-Type':'application/json'},
-  //   body: {
-  //    "first_name": this.firstName.value
-  //   }
-  //  });
-  // };
- 
+export default Form;
