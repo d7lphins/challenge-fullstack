@@ -94,11 +94,8 @@ const Form = () => {
   };
 
   return (
-    <div className="form-sidebar">
-
-      <p> end: {address} </p>
-      <p> ende: {userAddress} </p>
-      
+    <div className="sidebar">
+    
       <form className="form-cinza">
 
         <div className="form">
